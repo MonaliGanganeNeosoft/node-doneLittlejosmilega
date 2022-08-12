@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info:
+  title: heroku deploy api correct
+  contact: {}
+  version: "1.0"
+servers:
+  - url: https://limitless-retreat-04937.herokuapp.com/api/v1
+    variables: {}
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: login Copy
+      operationId: loginCopy
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/loginCopyRequest"
+            example:
+              email: moni@gmail.com
+              password: "123456"
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: register user Copy
+      operationId: registeruserCopy
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/registeruserCopyRequest"
+            example:
+              name: peter2
+              email: peter2@gmail.com
+              password: "123456"
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /Jobs:
+    get:
+      tags:
+        - Jobs
+      summary: get all jobs Copy
+      operationId: getalljobsCopy
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    post:
+      tags:
+        - Jobs
+      summary: create job  request Copy
+      operationId: createjobrequestCopy
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createjobrequestCopyRequest"
+            example:
+              company: facebook2
+              position: back-end-development
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /jobs/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The job ID.
+
+    get:
+      tags:
+        - Jobs
+      summary: git single job Copy
+      operationId: gitsinglejobCopy
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    delete:
+      tags:
+        - Jobs
+      summary: delete jobs Copy
+      operationId: deletejobsCopy
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /Jobs/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The job ID.
+    patch:
+      tags:
+        - Jobs
+      summary: update job Copy
+      operationId: updatejobCopy
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/updatejobCopyRequest"
+            example:
+              company: netflix22
+              position: back-end-development
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+components:
+  schemas:
+    loginCopyRequest:
+      title: loginCopyRequest
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: moni@gmail.com
+        password: "123456"
+    createjobrequestCopyRequest:
+      title: createjobrequestCopyRequest
+      required:
+        - company
+        - position
+      type: object
+      properties:
+        company:
+          type: string
+        position:
+          type: string
+      example:
+        company: facebook2
+        position: back-end-development
+    updatejobCopyRequest:
+      title: updatejobCopyRequest
+      required:
+        - company
+        - position
+      type: object
+      properties:
+        company:
+          type: string
+        position:
+          type: string
+      example:
+        company: netflix22
+        position: back-end-development
+    registeruserCopyRequest:
+      title: registeruserCopyRequest
+      required:
+        - name
+        - email
+        - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: peter2
+        email: peter2@gmail.com
+        password: "123456"
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+  - name: Misc
+    description: ""
+  - name: Auth
+    description: ""
+  - name: Jobs
+    description: ""
